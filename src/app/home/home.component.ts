@@ -1,15 +1,13 @@
-import { AfterContentInit, AfterViewInit, Component, DoCheck, ViewChild } from '@angular/core';
-import { CreateProfileComponent } from './components/create-profile/create-profile.component';
-import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
+import { Component, ViewChild } from '@angular/core';
+import { CreateProfileComponent } from '../components/create-profile/create-profile.component';
+import { AllProfilesComponent } from '../components/all-profiles/all-profiles.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent  {
-
-  
+export class HomeComponent {
   viewchildId:any;  // we are sending the id to create component form 
   @ViewChild (CreateProfileComponent) create :CreateProfileComponent;
   @ViewChild (AllProfilesComponent) allProfile:AllProfilesComponent;
@@ -29,16 +27,21 @@ export class AppComponent  {
 
 
   // new use case without input decorator i can pass direclty values to the method;
-  editUser(data:any){
+   editUser(data:any){
     console.log(this.viewchildId,'before id')
 
     this.viewchildId = data;
+    setTimeout( ()=>{this.create.editUserMethods()},10  )
+    // this.create.editUserMethods()
     console.log(this.viewchildId ,'after id')
     // this.viewchildId = data;
     console.log(this.viewchildId,'idd')
-    this.create.editUserMethod(data)
+    // this.create.editUserMethod(data)
     
   }
 
   
 }
+
+
+

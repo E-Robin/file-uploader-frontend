@@ -1,0 +1,22 @@
+<div class="container">
+
+    <div class="row ">
+
+
+        <div class="profileData col " *ngFor="let profile of profile$ | async">
+            <img [src]="profile.imagePath" alt="" width="150" height="100">
+            <div>
+                <span>{{profile.name}}</span>
+
+            </div>
+            <div class="d-flex justify-content-space-evenly">
+                <button class="btn btn-danger" [disabled]="isDelete" (click)="Delete(profile._id)"> Delete </button>
+                <button class="btn btn-success" [disabled]="isDelete" (click)="Edit(profile._id) "  > Edit </button>
+                <!-- [routerLink]="['profile',profile._id]"  -->
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
